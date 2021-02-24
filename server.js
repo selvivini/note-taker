@@ -5,9 +5,12 @@ const noteData = require('./db/db.json')
 const app= express();
 const PORT =process.env.PORT || 3000
 
+
+
 app.use(express.static('public'))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+
 
 // api to get the note object
 app.get('/api/notes',(req,res)=>{
@@ -53,7 +56,7 @@ app.get('/notes',(req,res)=>{
     
 })
 // base route which fetches the index.html page
-app.get('/', (req,res)=>{
+app.get('*', (req,res)=>{
     res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
